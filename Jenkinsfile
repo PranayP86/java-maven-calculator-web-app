@@ -5,11 +5,7 @@ node {
       git 'https://github.com/maping/java-maven-calculator-web-app.git'
    }
    stage('JUnit Test') {
-      if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' clean test"
-      } else {
-         bat(/"${mvnHome}\bin\mvn" clean test/)
-      }
+      sh 'mvn clean test'
    }
    stage('Integration Test') {
       if (isUnix()) {
