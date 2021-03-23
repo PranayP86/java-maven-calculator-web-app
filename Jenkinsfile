@@ -1,8 +1,9 @@
 node {
+   
    def mvnHome = tool 'M3'
    
-   
-   
+   docker.image('jenkins/jenkins').inside {
+      
    stage('Checkout Code') { 
       git 'https://github.com/PranayP86/java-maven-calculator-web-app.git'
    }
@@ -31,5 +32,5 @@ node {
       }
       echo 'Deploy...'
    }
+ }
 }
-   
