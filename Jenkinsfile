@@ -4,7 +4,7 @@ node {
    
    
    stage('Checkout Code') { 
-      git 'https://github.com/maping/java-maven-calculator-web-app.git'
+      git 'https://github.com/PranayP86/java-maven-calculator-web-app.git'
    }
    stage('JUnit Test') {
       sh "'${mvnHome}/bin/mvn' clean test"
@@ -23,11 +23,7 @@ node {
    }
   */
   stage('Performance Test') {
-      if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' verify"
-      } else {
-         bat(/"${mvnHome}\bin\mvn" verify/)
-      }
+      sh "'${mvnHome}/bin/mvn' verify"
    }
    stage('Deploy') {
       timeout(time: 10, unit: 'MINUTES') {
