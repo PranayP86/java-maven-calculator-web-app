@@ -28,7 +28,7 @@ pipeline {
       }
       stage("JUnit Test") {
          steps {
-            sh "'mvn clean test"
+            sh "'${M2_HOME}/bin/mvn' clean test"
          }
       }
       stage("Integration Test") {
