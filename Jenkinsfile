@@ -28,15 +28,16 @@ pipeline {
             sh "'${mvnHome}/bin/mvn' verify"
          }
       }
-      stage("Docker Build") {
+      stage("Docker Build and Tag") {
          steps {
             sh "docker build -t pranaycirruslabs/calculator"
+            sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
       }
       stage("Docker Push") {
          steps {
             withDockerRegistry(credentialsId: 'pranaycirruslabs-docker', url: 'pranaycirruslabs/calculator') {
-               sh "docker push pranaycirruslabs/calculator"
+               sh "docker push pranaycirruslabs/calculator:$BUILD_NUMBER"
             }
          }
       }
