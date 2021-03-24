@@ -8,7 +8,7 @@ pipeline {
 
    tools {
       maven 'M3'
-      jdk 'jdk-9.0.4'
+      jdk 'jdk-8'
       
    }
 
