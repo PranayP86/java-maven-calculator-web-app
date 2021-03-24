@@ -1,33 +1,51 @@
-node {
-   def mvnHome = tool 'M3'
+pipeline {
+   
+   agent any
 
-   stage('Checkout Code') { 
-      steps {
-         checkout scm
+   tools {
+      maven 'M3'
+      docker 'docker'
+   }
+
+   stages {
+      stage("Checkout Code") {
+         steps {
+            checkout scm
+         }
       }
-   }
-   stage('JUnit Test') {
-      sh "'${mvnHome}/bin/mvn' clean test"
-   }
-   stage('Integration Test') {
-      sh "'${mvnHome}/bin/mvn' integration-test"
-   }
- /*
-   stage('Performance Test') {
-      if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' cargo:start verify cargo:stop"
-      } else {
-         bat(/"${mvnHome}\bin\mvn" cargo:start verify cargo:stop/)
+      stage("JUnit Test") {
+         steps {
+            sh "'${mvnHome}/bin/mvn' clean test"
+         }
       }
-   }
-  */
-  stage('Performance Test') {
-      sh "'${mvnHome}/bin/mvn' verify"
-   }
-   stage('Deploy') {
-      timeout(time: 10, unit: 'MINUTES') {
+      stage("Integration Test") {
+         steps {
+         sh "'${mvnHome}/bin/mvn' integration-test"
+         }
+      }
+      stage("Perfromance Test") {
+         steps {
+            sh "'${mvnHome}/bin/mvn' verify"
+         }
+      }
+      stage("Docker Build") {
+         steps {
+            sh "docker build -t pranaycirruslabs/calculator"
+         }
+      }
+      stage("Docker Push") {
+         steps {
+            withDockerRegistry(credentialsId: 'pranaycirruslabs-docker', url: 'pranaycirruslabs/calculator') {
+               sh "docker push pranaycirruslabs/calculator"
+            }
+         }
+      }
+      stage("Deploy") {
+         steps {
+            timeout(time: 10, unit: 'MINUTES') {
            input message: 'Deploy this web app to production ?'
+         }
       }
-      echo 'Deploy...'
+      }
    }
 }
