@@ -23,13 +23,12 @@ pipeline {
             sh '''
             echo "PATH = ${PATH}"
             echo "M2_HOME = ${M2_HOME}"
-            echo "M3_HOME = ${M3_HOME}"
             '''
          }
       }
       stage("JUnit Test") {
          steps {
-            sh "'${M2_HOME}/bin/mvn' clean test"
+            sh "'${M2_HOME}' clean test"
          }
       }
       stage("Integration Test") {
