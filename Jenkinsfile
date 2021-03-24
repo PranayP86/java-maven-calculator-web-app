@@ -4,7 +4,11 @@ pipeline {
       imagename = "jenkins"
    }
 
-   agent any
+   agent {
+      docker {
+         imaage 'jenkins:latest'
+      }
+   }
 
    tools {
       maven 'M3'
@@ -28,10 +32,7 @@ pipeline {
             sh '''
             echo "PATH = ${PATH}"
             echo "M2_HOME = ${M2_HOME}"
-            echo "$USER"
             whoami
-
-            sudo usermod -aG docker $USER
 
             '''
          }
@@ -53,7 +54,7 @@ pipeline {
       }
       stage("Docker Build and Tag") {
          steps {
-            sh "docker build -t --privileged pranaycirruslabs/calculator ."
+            sh "docker build -t pranaycirruslabs/calculator ."
             sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
       }
