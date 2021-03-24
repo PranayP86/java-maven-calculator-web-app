@@ -1,10 +1,14 @@
 pipeline {
    
+   environment {
+      imagename = "jenkins"
+   }
+
    agent any
 
    tools {
       maven 'M3'
-      docker 'docker'
+      
    }
 
    stages {
@@ -48,5 +52,6 @@ pipeline {
          }
       }
       }
+
    }
 }
