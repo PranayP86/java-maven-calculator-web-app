@@ -30,8 +30,8 @@ pipeline {
             echo "M2_HOME = ${M2_HOME}"
             echo $USER
 
-            sudo usermod -aG doker $USER
-            
+            sudo usermod -aG docker $USER
+
             '''
          }
       }
