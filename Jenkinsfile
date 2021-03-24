@@ -48,7 +48,7 @@ pipeline {
       }
       stage("Docker Build and Tag") {
          steps {
-            sh "docker build -t pranaycirruslabs/calculator ."
+            sh "docker build -t --privileged pranaycirruslabs/calculator ."
             sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
       }
