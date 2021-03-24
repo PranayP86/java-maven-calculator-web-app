@@ -2,7 +2,9 @@ node {
    def mvnHome = tool 'M3'
 
    stage('Checkout Code') { 
-      git 'https://github.com/maping/java-maven-calculator-web-app.git'
+      steps {
+         checkout scm
+      }
    }
    stage('JUnit Test') {
       sh "'${mvnHome}/bin/mvn' clean test"
