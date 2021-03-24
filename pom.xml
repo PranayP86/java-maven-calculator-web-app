@@ -182,7 +182,7 @@
                     </container>
                     <configuration>
                         <type>existing</type>
-                        <home>/Users/maping/apache/tomcat</home>
+                        <home>/usr/local/apache-tomcat-9.0.44</home>
                     </configuration>
                 </configuration>
             </plugin>
