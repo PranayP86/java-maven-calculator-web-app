@@ -1,18 +1,14 @@
 node {
-   
    def mvnHome = tool 'M3'
-   
-   docker.image('jenkins/jenkins').inside {
-      
+
    stage('Checkout Code') { 
-      git 'https://github.com/PranayP86/java-maven-calculator-web-app.git'
+      git 'https://github.com/maping/java-maven-calculator-web-app.git'
    }
    stage('JUnit Test') {
       sh "'${mvnHome}/bin/mvn' clean test"
    }
    stage('Integration Test') {
       sh "'${mvnHome}/bin/mvn' integration-test"
-     
    }
  /*
    stage('Performance Test') {
@@ -32,5 +28,4 @@ node {
       }
       echo 'Deploy...'
    }
- }
 }
