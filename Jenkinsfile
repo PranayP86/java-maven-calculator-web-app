@@ -13,6 +13,7 @@ pipeline {
    tools {
       maven 'M3'
       jdk 'jdk-8'
+      docker 'docker'
       
    }
 
