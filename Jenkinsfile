@@ -6,7 +6,7 @@ pipeline {
 
    agent {
       docker {
-         imaage 'jenkins:latest'
+         image 'jenkins:latest'
       }
    }
 
