@@ -8,6 +8,7 @@ pipeline {
 
    tools {
       maven 'M3'
+      jdk 'jdk-9.0.4'
       
    }
 
@@ -17,9 +18,17 @@ pipeline {
             checkout scm
          }
       }
+      stage("Initialize"){
+         steps {
+            sh '''
+            echo "PATH = ${PATH}"
+            echo "M2_HOME = ${M2_HOME}"
+            '''
+         }
+      }
       stage("JUnit Test") {
          steps {
-            sh "'${mvnHome}/bin/mvn' clean test"
+            sh "'mvn clean test"
          }
       }
       stage("Integration Test") {
