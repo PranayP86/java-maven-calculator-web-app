@@ -33,12 +33,12 @@ pipeline {
       }
       stage("Integration Test") {
          steps {
-         sh "'${mvnHome}/bin/mvn' integration-test"
+         sh "'${M2_HOME}/bin/mvn' integration-test"
          }
       }
       stage("Perfromance Test") {
          steps {
-            sh "'${mvnHome}/bin/mvn' verify"
+            sh "'${M2_HOME}/bin/mvn' verify"
          }
       }
       stage("Docker Build and Tag") {
