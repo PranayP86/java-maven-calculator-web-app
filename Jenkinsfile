@@ -28,7 +28,7 @@ pipeline {
             sh '''
             echo "PATH = ${PATH}"
             echo "M2_HOME = ${M2_HOME}"
-            echo $USER
+            echo "$USER"
 
             sudo usermod -aG docker $USER
 
