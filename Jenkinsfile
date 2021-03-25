@@ -51,7 +51,7 @@ pipeline {
       }
       stage("Docker Push") {
          steps {
-            withDockerRegistry(credentialsId: 'pranaycirruslabs') {
+            withDockerRegistry(credentialsId: 'pranaycirruslabs', url: 'https://index.docker.io/v1/') {
                sh "docker push pranaycirruslabs/calculator:$BUILD_NUMBER"
             }
          }
