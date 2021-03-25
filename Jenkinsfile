@@ -62,6 +62,7 @@ pipeline {
             timeout(time: 10, unit: 'MINUTES') {
                input message: 'Deploy this web app to production ?'
             sh "chmod +x ./deploy.sh"
+            sh "./deploy.sh"
          }
       }
       }
