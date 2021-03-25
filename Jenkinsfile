@@ -1,8 +1,6 @@
 pipeline {
    
-   environment {
-      imagename = "jenkins"
-   }
+   
 
    agent any
 
