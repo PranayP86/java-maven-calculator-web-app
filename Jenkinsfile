@@ -1,6 +1,8 @@
 pipeline {
    
-   agent any
+   agent {
+      label 'dedicated-slave'
+   }
 
    tools {
       maven 'M3'
