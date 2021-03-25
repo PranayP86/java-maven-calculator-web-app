@@ -30,21 +30,22 @@ pipeline {
             '''
          }
       }
-      stage("JUnit Test") {
+   /*   stage("JUnit Test") {
          steps {
-      //      sh "'${M2_HOME}/bin/mvn' clean test"
+          sh "'${M2_HOME}/bin/mvn' clean test"
          }
       }
       stage("Integration Test") {
          steps {
-       //  sh "'${M2_HOME}/bin/mvn' integration-test"
+         sh "'${M2_HOME}/bin/mvn' integration-test"
          }
       }
       stage("Perfromance Test") {
          steps {
-      //      sh "'${M2_HOME}/bin/mvn' verify"
+            sh "'${M2_HOME}/bin/mvn' verify"
          }
       }
+      */
       stage("Docker Build and Tag") {
          steps {
             sh "docker ps"
