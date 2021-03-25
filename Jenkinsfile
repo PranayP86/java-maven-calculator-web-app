@@ -42,6 +42,7 @@ pipeline {
       stage("Docker Build and Tag") {
          steps {
             sh "docker build -t pranaycirruslabs/calculator:$BUILD_NUMBER ."
+            sh "docker run pranaycirruslabs/calculator:$BUILD_NUMBER"
             sh "docker images ps"
             sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
