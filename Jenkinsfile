@@ -44,9 +44,9 @@ pipeline {
             sh "docker build -t pranaycirruslabs/calculator:$BUILD_NUMBER ."
             sh "docker ps"
             sh "docker images ps"
-            sh "docker run pranaycirruslabs/calculator:$BUILD_NUMBER"
+            //sh "docker run pranaycirruslabs/calculator:$BUILD_NUMBER"
             
-            sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
+            //sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
       }
       stage("Docker Push") {
