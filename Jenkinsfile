@@ -17,19 +17,10 @@ pipeline {
             checkout scm
          }
       }
-      stage("Initialize"){
+      stage("Docker Test"){
          steps {
-            script {
-               def dockerHome = tool 'docker'
-               env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
 
-            sh '''
-            echo "PATH = ${PATH}"
-            echo "M2_HOME = ${M2_HOME}"
-            whoami
-
-            '''
+            sh "docker ps"
          }
       }
    /*   stage("JUnit Test") {
@@ -50,7 +41,6 @@ pipeline {
       */
       stage("Docker Build and Tag") {
          steps {
-            sh "docker ps"
             sh "docker build -t pranaycirruslabs/calculator ."
             sh "docker tag calculator pranaycirruslabs/calculator:$BUILD_NUMBER"
          }
