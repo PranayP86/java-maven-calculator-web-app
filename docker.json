@@ -1,5 +1,5 @@
 {
-    "Image": "pranaycirruslabs/calculator:latest",
+    "Image": "agiletrailblazers/tomcat:latest",
     "ExposedPorts": {
       "8080/tcp": {}
     },
