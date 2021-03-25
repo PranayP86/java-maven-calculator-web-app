@@ -1,0 +1,4 @@
+node('modp_jenkins_worker_1'){
+stage('dockerverify')
+sh "docker ps"
+}
