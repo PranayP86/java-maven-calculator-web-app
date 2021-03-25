@@ -4,7 +4,12 @@ pipeline {
       label 'dedicated-slave'
    }
 
-   
+   tools {
+      maven 'maven-3.6.0'
+      jdk 'java-8'
+   //  dockerTool 'docker'
+      
+   }
 
    stages {
       stage("Checkout Code") {
