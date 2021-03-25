@@ -59,7 +59,8 @@ pipeline {
       stage("Deploy") {
          steps {
             timeout(time: 10, unit: 'MINUTES') {
-           input message: 'Deploy this web app to production ?'
+               input message: 'Deploy this web app to production ?'
+            sh "chmod +x ./deploy.sh"
          }
       }
       }
