@@ -4,12 +4,7 @@ pipeline {
       imagename = "jenkins"
    }
 
-   agent {
-      docker {
-         image 'jenkins:latest'
-         args '-u root -p 8081:8081 -v /var/run/docker.sock:/var/run/docker.sock'
-      }
-   }
+   agent any
 
    tools {
       maven 'M3'
