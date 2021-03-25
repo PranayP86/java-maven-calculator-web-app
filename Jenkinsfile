@@ -41,6 +41,7 @@ pipeline {
       */
       stage("Docker Build and Tag") {
          steps {
+            sh "docker run -it --rm --name calculator-maven -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install"
             sh "docker build -t pranaycirruslabs/calculator:latest ."
             sh "docker ps"
             sh "docker images ps"

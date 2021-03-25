@@ -1,13 +1,13 @@
 {
     "Image": "pranaycirruslabs/calculator:latest",
     "ExposedPorts": {
-      "3281/tcp": {}
+      "3000/tcp": {}
     },
     "HostConfig": {
       "PortBindings": {
-        "3281/tcp": [
+        "3000/tcp": [
           {
-            "HostPort": "3281"
+            "HostPort": "8083"
           }
         ]
       },
