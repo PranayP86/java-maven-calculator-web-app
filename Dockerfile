@@ -1,4 +1,4 @@
-FROM 
+FROM maven:3.3-jdk-8
 
 # ADD settings.xml /usr/local/tomcat/conf
 # ADD tomcat-users.xml /usr/local/tomcat/conf/
