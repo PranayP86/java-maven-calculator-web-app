@@ -41,7 +41,7 @@ pipeline {
       */
       stage("Docker Build and Tag") {
          steps {
-            sh "docker build -t pranaycirruslabs/calculator:$BUILD_NUMBER ."
+            sh "docker build -t pranaycirruslabs/calculator:latest ."
             sh "docker ps"
             sh "docker images ps"
             //sh "docker run pranaycirruslabs/calculator:$BUILD_NUMBER"
@@ -52,7 +52,7 @@ pipeline {
       stage("Docker Push") {
          steps {
             withDockerRegistry(credentialsId: 'pranaycirruslabs', url: 'https://index.docker.io/v1/') {
-               sh "docker push pranaycirruslabs/calculator:$BUILD_NUMBER"
+               sh "docker push pranaycirruslabs/calculator:latest"
             }
          }
       }

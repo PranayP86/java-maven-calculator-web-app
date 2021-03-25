@@ -1,0 +1,19 @@
+{
+    "Image": "pranaycirruslabs/calculator:latest",
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
+    "HostConfig": {
+      "PortBindings": {
+        "8080/tcp": [
+          {
+            "HostPort": "8082"
+          }
+        ]
+      },
+      "RestartPolicy": {
+        "Name": "always"
+      },
+      "AutoRemove": false
+    }
+}  
