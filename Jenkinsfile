@@ -39,6 +39,7 @@ pipeline {
          }
       }
       */
+      
       stage("Docker Build and Tag") {
          steps {
             sh "mvn clean package"
