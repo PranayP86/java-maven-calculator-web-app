@@ -41,7 +41,7 @@ pipeline {
       */
       stage("Docker Build and Tag") {
          steps {
-            sh "mvn clean install"
+            sh "mvn clean package"
             sh "docker build -t pranaycirruslabs/calculator:latest ."
             sh "docker ps"
             sh "docker images ps"
